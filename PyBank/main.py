@@ -7,6 +7,7 @@ dataset = input('What dataset would you like to test?  (budget_data_1.csv or bud
 
 # Set path for file
 csvpath = os.path.join('raw_data', dataset)
+outputpath = os.path.join('output', 'PyBank_Output.txt')
 
 # Results storage
 count = 0
@@ -66,3 +67,16 @@ print('Greatest Increase in Revenue: ' + greatest_increase_month + ' ($' + str(g
 print('Greatest Decrease in Revenue: ' + greatest_decrease_month + ' ($' + str(greatest_decrease) + ')')
 print('```')
 print('')
+
+with open(outputpath, "w") as text_file:
+    print('', file=text_file)
+    print('```', file=text_file)
+    print('Financial Analysis', file=text_file)
+    print('----------------------------', file=text_file)
+    print('Total Months: ' + str(count), file=text_file)
+    print('Total Revenue: $' + str(total), file=text_file)
+    print('Average Revenue Change: $' + str(round(avg_change, 2)), file=text_file)
+    print('Greatest Increase in Revenue: ' + greatest_increase_month + ' ($' + str(greatest_increase) + ')', file=text_file)
+    print('Greatest Decrease in Revenue: ' + greatest_decrease_month + ' ($' + str(greatest_decrease) + ')', file=text_file)
+    print('```', file=text_file)
+    print('', file=text_file)

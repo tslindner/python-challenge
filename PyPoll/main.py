@@ -21,6 +21,7 @@ dataset = input('What dataset would you like to test?  (election_data_1.csv or e
 
 # Set path for file
 csvpath = os.path.join('raw_data', dataset)
+outputpath = os.path.join('output', 'PyPoll_Output.txt')
 
 # Results storage
 vote_count = 0
@@ -80,3 +81,18 @@ for j in range(candidate_count):
 print('-------------------------')
 print('Winner: ' + str(winner))
 print('-------------------------')
+
+
+with open(outputpath, "w") as text_file:
+    print('', file=text_file)
+    print('Election Results', file=text_file)
+    print('-------------------------', file=text_file)
+    print('Total Votes: ' + str(vote_count), file=text_file)
+    print('-------------------------', file=text_file)
+
+    for j in range(candidate_count):
+        print(str(candidates[j] + ': ' + str(percent_vote[j]) + '% ' + '(' + str(individual_vote_count[j]) + ')'), file=text_file)
+
+    print('-------------------------', file=text_file)
+    print('Winner: ' + str(winner), file=text_file)
+    print('-------------------------', file=text_file)
